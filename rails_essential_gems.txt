@@ -1,0 +1,37 @@
+Quite usefull and necessary gems to make development easy
+
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem 'annotate'
+  gem 'bullet' #to detect n+1 query problems
+  gem 'debugger'
+  gem 'localtunnel'
+  gem 'lol_dba'
+  gem 'mailcatcher'
+  gem 'pry'
+  gem 'pry-doc'
+  gem 'quiet_assets'
+  gem 'rack-mini-profiler'
+  gem 'railroady'
+  gem 'rails-footnotes', '>= 3.7.5.rc4'
+  gem 'rails_best_practices'
+  gem 'reek'
+  gem 'request-log-analyzer'
+  gem 'smusher'
+  gem 'zeus' # don't add this in your gemfile.
+
+  gem 'ruby-prof'
+  gem 'sql-logging'
+  gem 'letter_opener'
+  gem 'pry'
+  #gem 'pry-debugger'
+  #gem 'pry-rails'
+  gem 'wirble'
+  gem 'awesome_print'
+  gem 'meta_request' #for logg and console in chrome browser
+  gem "rails-erd" #Visually understanding Rails apps. Need to install GraphViz before using this gem.
+  gem 'annotate', ">=2.6.0" #models schema annotation (table description) gem
+  gem "table_print" # print active record object in tabular formatc similar to awesome-print
+
+  gem 'brakeman' #to track all sql injections and vulnerabilities
+  gem 'xray-rails' #Reveal your UI's bones
