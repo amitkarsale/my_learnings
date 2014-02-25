@@ -1,0 +1,83 @@
+Tips and Tricks to Search in Production Logs or Linux/Unix file
+
+grep command is one of the most frequently used UNIX command stands for "Global Regular Expression Print"  like  find, chmod or tar command in Unix. grep command in Unix operating system e.g. Linux, Solaris, BSD, Ubuntu or IBM AIX is used to search files with matching patterns, by using grep command in Unix you can search a file which contains a particular word or particularpattern. UNIX grep command also provides several useful command line option which can be used to enhance functionality of grep command e.g. by using grep -v you can list down all files which doesn't contains a word i.e. excluding files which matches a pattern, grep -c will print count of matching pattern in a file etc. One of the popular example of  grep command is to find empty files and directories in unix.
+Grep command is also part of  any beginners UNIX command tutorial  as it  is an essential command to learn in order to work efficiently in any UNIX environment e..g Redhat Linux, Ubuntu, IBM AIX, Oracle Solaris or BSD. Any way  these examples are by no means complete so please contribute your grep command tips or how you are using grep in Linux to make it more useful and allow all of us to benefit from each others experience and work efficiently in UNIX or Linux.
+
+grep command in Unix Example 1: 
+Finding relevant word and exclusion of  irrelevant word. Most of the time I look for Exception and Errors in log files and some time I know certain Exception I can ignore so I use grep -v option to exclude those Exceptions
+grep Exception logfile.txt | grep -v ERROR
+
+This grep command example will search for word "Exception" in logfile.txt and print them but since we have piped out of first grep command to second grep command which will exclude all lines which match world "ERROR".  To make this grep example more concrete let's see another example, here we have a file which contains three lines  as shown below :
+$ cat example.txt
+UNIX operating system
+UNIX and Linux operating system
+Linux operation system
+
+Now we want to search all lines in file example.txt which contains word UNIX but same time doesn't contain world Linux.
+  
+$ grep UNIX example.txt
+UNIX operating system
+UNIX and Linux operating system
+
+Now to exclude all lines which contains Linux we will apply another grep command in this output with option -v to exclude matching word as shown in below grep command :
+
+$ grep UNIX example.txt  | grep -v Linux
+UNIX operating system
+
+Grep command Example 2: 
+If you want to count of a particular word in log file you can use grep -c option to count the word. Below example of command will print how many times word "Error" has appeared in logfile.txt.
+
+grep -c "Error" logfile.txt
+
+If we apply this grep command on our example file to find how many lines contains  word e.g. UNIX has occurred in the file : 
+$ grep -c UNIX example.txt
+2
+
+3) Sometime we are not just interested on matching line but also on lines around matching lines particularly useful to see what happens before any Error or Exception. grep --context option allows us to print lines around matching pattern. Below example of grep command in UNIX will print 6 lines around matching line of word "successful" in logfile.txt
+
+grep --context=6 successful logfile.txt
+Show additional six lines after matching very useful to see what is around and to print whole message if it splits around multiple lines. You can also use command line option "C" instead of "--context" for example
+grep -C 2 'hello' *
+Prints two lines of context around each matching line.
+
+4) egrep stands for extended grep and it is more powerful than grep command in Unix and allows more regular exception like you can use "|" option to search for either Error or Exception by executing just one command.
+
+egrep 'Error|Exception' logfile.txt
+
+5) If you want to do case insensitive search than use -i option from grep command in UNIX. Grep -i will find occurrence of both Error, error and ERROR and quite useful to display any sort of Error from log file.
+
+grep -i Error logfile
+
+6) zgrep is another great version of grep command in Unix which is used to perform same operation as grep does but with .gz files. Many a times we gzip the old file to reduce size and later wants to look or find something on those file. zgrep is your man for those days. Below command will print all files which have "Error" on them.
+
+zgrep -i Error *.gz
+
+7) Use grep -w command in UNIX if you find whole word instead of just pattern.
+grep -w ERROR logfile
+
+Above grep command in UNIX searches only for instances of 'ERROR' that are entire words; it does not match `SysERROR'.
+For more control, use `\<' and `\>' to match the start and end of words.  For example:
+
+grep 'ERROR>' *
+
+Searches only for words ending in 'ERROR', so it matches the word `SysERROR'.
+
+
+8) Another useful grep command line option is "grep -l" which display only the file names which matches the given pattern. Below command will only display file names which have ERROR?
+
+grep -l ERROR *.log
+grep -l 'main' *.java will list the names of all Java files in the current directory whose contents mention `main'.
+
+9) If you want to see line number of matching lines you can use option "grep -n" below command will show on which lines Error has appeared.
+grep -n ERROR log file.
+
+10) If you want to do recursive search using grep command in Unix there are two options either use "-R" command line option or increase directory one by one as shown below.
+Now I have two bonus examples of grep command in unix:
+
+
+11) grep command in UNIX can show matching patter in color which is quite useful to highlight the matching section , to see matching pattern in color use below command.
+
+grep Exception  today.log --color
+
+12) There are three version of grep command in UNIX `grep, fgrep, egrep'. `fgrep' stands for Fixed `grep', `egrep' Extended `grep'
+
